@@ -1,0 +1,260 @@
+<!-- application/views/scripts/group/confirm.phtml -->
+<h2>Review your planned visit to Texas A&amp;M</h2>
+
+<form id="visitDateAndTime" class="registrationForm" method="post">
+
+<div class="itinerary">
+
+    <div class="demographics events">
+        <h3>Contact information</h3>
+
+        <dl>
+            <dt>Name</dt>
+            <dd><?php echo isset($this -> group['first_name']) ? $this -> escape($this -> group['first_name'] . " " . $this -> group['last_name']) : ""; ?></dd>
+
+            <dt>Email</dt>
+            <dd><?php echo isset($this -> group['email']) ? $this -> escape($this -> group['email']) : ""; ?></dd>
+
+            <dt>Phone</dt>
+            <dd><?php echo isset($this -> group['phone']) ? $this -> escape($this -> group['phone']) : ""; ?></dd>
+
+            <dt>Address</dt>
+            <dd><?php echo isset($this -> group['address']) ? $this -> escape($this -> group['address']) : ""; ?></dd>
+
+            <dt>City</dt>
+            <dd><?php echo isset($this -> group['city']) ? $this -> escape($this -> group['city']) : ""; ?></dd>
+
+            <dt>State and Zip</dt>
+            <dd><?php echo (isset($this->group['state']) && isset($this->group['zipcode']))? $this->escape($this->group['state']." ".$this->group['zipcode'] ) : ""; ?></dd>
+        </dl>
+        <div class="clear"></div>
+    </div>
+
+    <div class="visitDateInfo events">
+        <h3>Group details</h3>
+
+        <dl>
+            <dt>Group Name</dt>
+            <dd><?php echo(isset($this -> group['name']) ? $this -> escape($this -> group['name']) : ""); ?></dd>
+
+            <dt>Group Type</dt>
+            <dd><?php
+				if (isset($this -> group['type'])) {
+					if ($this -> group['type'] == 'Other') {
+						echo $this -> group['otherGType'];
+					} else {
+						echo $this -> group['type'];
+					}
+				} else {
+					echo "";
+				}
+                 ?></dd>
+
+            <dt>Date</dt>
+            <dd><?php echo isset($this -> group['date']) ? $this -> escape(date('l, F j, Y', strtotime($this -> group['date']))) : ""; ?></dd>
+
+            <dt>Number of students</dt>
+            <dd><?php echo isset($this -> group['visitors_num']) ? $this -> escape($this -> group['visitors_num']) : ""; ?></dd>
+
+            <dt>Number of adults</dt>
+            <dd><?php echo isset($this -> group['audits_num']) ? $this -> escape($this -> group['audits_num']) : ""; ?></dd>
+
+            <dt>Size of Party</dt>
+            <dd><?php echo isset($this -> group['total_num']) ? $this -> escape($this -> group['total_num']) : ""; ?></dd>
+        </dl>
+        <div class="clear"></div>
+    </div>
+
+    <div class="events">
+        <h3>Campus visit details</h3>
+        <dl>
+            <?php if(isset($this->group['schedule_id'])): ?>
+            <?php if($this->group['schedule_id'] > 6): ?>
+            <dt><?php
+				$visitType = "Tour Only";
+            	switch ($this->escape($this->group['schedule_id'])) {
+					case '7' :
+						$tourTime = "8:30 a.m.";
+						break;
+					case '8' :
+						$tourTime = "9:30 a.m.";
+						break;
+					case '9' :
+						$tourTime = "10:00 a.m.";
+						break;
+					case '10' :
+						$tourTime = "11:30 a.m.";
+						break;
+					case '11' :
+						$tourTime = "2:30 p.m.";
+						break;
+					default :
+						echo "";
+						break;
+				} 
+				echo $tourTime; ?></dt>
+            <dd>Campus Tour</dd>
+
+            <dt>Tour by</dt>
+            <dd><?php echo $this -> escape($this -> tourBy); ?></dd>
+            <?php elseif ($this->group['schedule_id'] <= 3): ?>
+
+            <dt>9:15 a.m.</dt>
+            <dd>Campus Tour</dd>
+
+            <dt>11:15 a.m.</dt>
+            <dd>Prospective Student Session</dd>
+
+            <dt>12:30 p.m.</dt>
+            <dd>Lunch</dd>
+
+            <dt>Lunch Payment</dt>
+            <dd><?php echo $this -> escape($this -> group['lunch_payment']); ?></dd>
+
+            <dt>1:45 p.m.</dt>
+            <dd><?php
+				$visitType = "Schedule 1";
+				switch ($this->group['schedule_id']) {
+					case '1' :
+						$additionTour = "Residence Life";
+						break;
+					case '2' :
+						$additionTour = "Corps of Cadets";
+						break;
+					case '3' :
+						$additionTour = "Bonfire Memorial";
+						break;
+					default :
+						echo "";
+						break;
+				}
+				echo $additionTour; ?></dd>
+
+            <?php else: ?>
+
+            <dt>11:15 a.m.</dt>
+            <dd>Campus Tour</dd>
+
+            <dt>01:00 p.m.</dt>
+            <dd>Lunch</dd>
+
+            <dt>Lunch Payment</dt>
+            <dd><?php echo $this -> escape($this -> group['lunch_payment']); ?></dd>
+
+            <dt>02:15 p.m.</dt>
+            <dd>Prospective Student Session</dd>
+
+            <dt>3:30 p.m.</dt>
+            <dd><?php
+				$visitType = "Schedule 2";
+				switch ($this->group['schedule_id']) {
+					case '4' :
+						$additionTour = "Residence Life";
+						break;
+					case '5' :
+						$additionTour = "Corps of Cadets";
+						break;
+					case '6' :
+						$additionTour = "Bonfire Memorial";
+						break;
+					default :
+						echo "";
+						break;
+				}
+				echo $additionTour; ?></dd>
+
+            <?php endif; ?>
+            <?php endif; ?>
+
+            <dt>Bus Parking</dt>
+            <dd><?php echo isset($this -> group['bus_parking']) ? (($this -> group['bus_parking']) ? "Yes" : "No") : ""; ?></dd>
+
+            <?php if(isset($this->group['bus_parking'])): ?>
+            <?php if($this->group['bus_parking']): ?>
+            <dt>Bus Name</dt>
+            <dd><?php echo $this -> escape($this -> group['bus_name']); ?></dd>
+            <?php endif; ?>
+            <?php endif; ?>
+
+        </dl>
+
+        <div class="clear"></div>
+    </div>
+
+    <div class="clear"></div>
+</div>
+
+    <fieldset class="submitRow">
+        <span id="cancelOption">
+            <a id="formBackwardButton" href="<?php echo $this -> baseUrl(); ?>/group/">Edit Your Info</a> or
+        </span>
+        <input type="submit" value="Submit" id="formForwardButton"/>
+    </fieldset>
+
+</form>
+
+<?php if(isset($this->group['name'])): ?>
+<form id="formBackward" class="registrationForm" method="post" style="display:none;" action="<?php echo $this -> baseUrl(); ?>/group/" >
+        <input type="text" name="name" value="<?php echo $this -> group['name']; ?>" />
+        <input type="text" name="type" value="<?php echo $this -> group['type']; ?>" />
+        <input type="text" name="otherGType" value="<?php echo $this -> group['otherGType']; ?>" />
+        <input type="text" name="first_name" value="<?php echo $this -> group['first_name']; ?>" />
+        <input type="text" name="last_name" value="<?php echo $this -> group['last_name']; ?>" />
+        <input type="text" name="email" value="<?php echo $this -> group['email']; ?>" />
+        <input type="text" name="phone" value="<?php echo $this -> group['phone']; ?>" />
+        <input type="text" name="address" value="<?php echo $this -> group['address']; ?>" />
+        <input type="text" name="city" value="<?php echo $this -> group['city']; ?>" />
+        <input type="text" name="state" value="<?php echo $this -> group['state']; ?>" />
+        <input type="text" name="zipcode" value="<?php echo $this -> group['zipcode']; ?>" />
+        <input type="text" name="visitors_num" value="<?php echo $this -> group['visitors_num']; ?>" />
+        <input type="text" name="audits_num" value="<?php echo $this -> group['audits_num']; ?>" />
+        <input type="text" name="total_num" value="<?php echo $this -> group['total_num']; ?>" />        
+        <input type="text" name="date" value="<?php echo $this -> group['date']; ?>" />
+        <input type="text" name="schedule_id" value="<?php echo $this -> group['schedule_id']; ?>" />
+        <input type="text" name="lunch_payment" value="<?php echo $this -> group['lunch_payment']; ?>" />
+        <input type="text" name="tourBy" value="<?php echo $this -> group['tourBy']; ?>" />
+        <input type="text" name="bus_parking" value="<?php echo $this -> group['bus_parking']; ?>" />
+        <input type="text" name="bus_name" value="<?php echo $this -> group['bus_name']; ?>" />
+        <input type="text" name="visitType" value="<?php echo $visitType; ?>" />
+        <input type="text" name="additionTour" value="<?php echo $additionTour; ?>" />
+        <input type="text" name="tourTime" value="<?php echo $tourTime; ?>" />
+</form>
+<form id="formForward" class="registrationForm" method="post" style="display:none;" action="<?php echo $this -> baseUrl(); ?>/group/thankyou/">
+        <input type="text" name="name" value="<?php echo $this -> group['name']; ?>" />
+        <input type="text" name="type" value="<?php echo $this -> group['type']; ?>" />
+        <input type="text" name="otherGType" value="<?php echo $this -> group['otherGType']; ?>" />
+        <input type="text" name="first_name" value="<?php echo $this -> group['first_name']; ?>" />
+        <input type="text" name="last_name" value="<?php echo $this -> group['last_name']; ?>" />
+        <input type="text" name="email" value="<?php echo $this -> group['email']; ?>" />
+        <input type="text" name="phone" value="<?php echo $this -> group['phone']; ?>" />
+        <input type="text" name="address" value="<?php echo $this -> group['address']; ?>" />
+        <input type="text" name="city" value="<?php echo $this -> group['city']; ?>" />
+        <input type="text" name="state" value="<?php echo $this -> group['state']; ?>" />
+        <input type="text" name="zipcode" value="<?php echo $this -> group['zipcode']; ?>" />
+        <input type="text" name="visitors_num" value="<?php echo $this -> group['visitors_num']; ?>" />
+        <input type="text" name="audits_num" value="<?php echo $this -> group['audits_num']; ?>" />
+        <input type="text" name="total_num" value="<?php echo $this -> group['total_num']; ?>" />        
+        <input type="text" name="date" value="<?php echo $this -> group['date']; ?>" />
+        <input type="text" name="schedule_id" value="<?php echo $this -> group['schedule_id']; ?>" />
+        <input type="text" name="lunch_payment" value="<?php echo $this -> group['lunch_payment']; ?>" />
+        <input type="text" name="tourBy" value="<?php echo $this -> group['tourBy']; ?>" />
+        <input type="text" name="bus_parking" value="<?php echo $this -> group['bus_parking']; ?>" />
+        <input type="text" name="bus_name" value="<?php echo $this -> group['bus_name']; ?>" />
+        <input type="text" name="visitType" value="<?php echo $visitType; ?>" />
+        <input type="text" name="additionTour" value="<?php echo $additionTour; ?>" />
+        <input type="text" name="tourTime" value="<?php echo $tourTime; ?>" />
+</form>
+<?php endif; ?>
+
+<?php $this -> headScript() -> captureStart() ?>
+$(function() {
+        $("#formBackwardButton").click(function(event){
+                event.preventDefault();
+                $('#formBackward').submit();
+        });
+        $("#formForwardButton").click(function(event){
+                event.preventDefault();
+                $('#formForward').submit();
+        });
+});
+<?php $this -> headScript() -> captureEnd() ?>

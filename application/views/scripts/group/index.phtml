@@ -1,0 +1,70 @@
+<!-- application/views/scripts/group/index.phtml -->
+
+<link rel="stylesheet" href="/css/smoothness/jquery-ui-1.10.1.custom.css" type="text/css" />
+<script src="/js/jquery-ui-1.10.1.custom.min.js"></script>
+
+<?php echo $this -> form; ?>
+
+<?php $this -> headScript() -> captureStart() ?>
+	function CheckGroup(GType) {
+	 	var element = document.getElementById('OGType');
+	 	if(GType == 'Other')
+	   		element.style.display='block';
+	 	else  
+	   		element.style.display='none';
+	}
+	
+	/* initialize the date picker element */
+	$(function() {
+	  $("#date").datepicker({
+	  	dateFormat: 'yy-mm-dd',
+	    minDate:'0', 
+	    maxDate: '+3M',
+	    changeYear: true,
+	    changeMonth: true,
+	  });
+	  setTimeout(function() {$("#date").datepicker("option", "beforeShowDay",  noWeekendsOrBlackoutDays); }, 100);
+	  setTimeout(function() {$("#date").datepicker("option", "onSelect",  checkBlkSchedule); }, 100);
+	}); 
+	
+	/* create an array of days which need to be disabled */
+	var disabledDays = [<?php echo $this->days; ?>];
+	
+	/* utility functions */
+	function noWeekendsOrBlackoutDays(date) {
+		var noWeekend = jQuery.datepicker.noWeekends(date);
+		return noWeekend[0] ? blackoutDays(date) : noWeekend;
+	}
+	function blackoutDays(date) {
+		var formattedDate = date.getFullYear() + '-' + (((date.getMonth()+1)<10)? ('0'+(date.getMonth() + 1)):(date.getMonth() + 1)) + '-' + ((date.getDate()<10)?('0'+date.getDate() ):date.getDate());
+		if($.inArray(formattedDate, disabledDays) != -1) {
+			return [false];
+		} else {
+			return [true];
+		}
+	}
+	
+	var halfDays = [<?php echo $this->halfDays; ?>];
+	var blkSches = [<?php echo $this->blkSches; ?>];
+
+	function checkBlkSchedule(date) {
+		$('#schedule1 :input').removeAttr('disabled');
+		$('#schedule2 :input').removeAttr('disabled');
+		$('#touronly1 :input').removeAttr('disabled');
+		$('#touronly2 :input').removeAttr('disabled');
+		$('#touronly3 :input').removeAttr('disabled');
+		$('#touronly4 :input').removeAttr('disabled');
+		$('#touronly5 :input').removeAttr('disabled');
+		var index = $.inArray(date, halfDays);
+		if(index != -1) {
+			var schedule_id = blkSches[index];
+			if (schedule_id <= 3) {
+				$('#schedule1 :input').attr('disabled', true);
+			} else if (schedule_id <= 6) {
+				$('#schedule2 :input').attr('disabled', true);
+			} else {
+				$('#touronly' + (schedule_id - 6) + ' :input').attr('disabled', true);
+			}
+		}
+	}
+<?php $this -> headScript() -> captureEnd() ?>

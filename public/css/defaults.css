@@ -1,0 +1,104 @@
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section { display: block; }
+audio, canvas, video { display: inline-block; *display: inline; *zoom: 1; }
+audio:not([controls]) { display: none; }
+[hidden] { display: none; }
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+font-size: 1em;
+line-height: 1.2;
+font-family: Frutiger, "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+}
+
+p {
+margin-bottom: 0.75em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Frutiger, "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 150%;
+}
+
+h2 {
+  font-size: 120%;
+}
+
+h3 {
+  font-size: 110%;
+}
+
+h4 {
+  font-size: 100%;
+}
+
+hr {
+  margin: 1em 0em 1em 0em;
+}
+
+a img {
+border: none;
+focus: none;
+outline: none;
+text-decoration: none;
+}
+
+.offPage {
+  position: absolute; 
+  display: block; 
+  left: -5000px;
+}
+
+.clear, .spacer {
+  display: block;
+  clear: both;
+  zoom: 1;
+}
+
+.clear:before, .clear:after, .spacer:before, .spacer:after {
+  content: "";
+}
+
+.center, .centered {
+text-align: center;
+margin: auto;
+}
+
+.italic, .italics {
+font-style: italic;
+}
+
+.underline, .underlined {
+text-decoration: underline;
+}
+
+.bold {
+font-weight: bold;
+}
+
+.spacedList > li {
+  margin-bottom: 0.66em;
+}
+
+.rightFloat {float: right;}
+.leftFloat {float:left;}
+
+.hilight {
+  border: 1px solid #666;
+  background-color: #eee;
+  color: black;
+  width: 65%;
+  padding: 10px;
+  margin-bottom: 2em;
+}
+
+.small {
+  font-size: 80%;
+}

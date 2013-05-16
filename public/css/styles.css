@@ -1,0 +1,576 @@
+/* ==|== Mobile first primary styles ===================================================== 
+   ========================================================================= */
+
+html,body {
+  height: 100%;
+}
+
+body {
+  font-size: 90%;
+  position: relative;
+  color: #332c2c;
+  line-height: 1.3;
+}
+
+a {
+  color: #500000;
+  text-decoration: none;
+}
+
+img {width: 100%;}
+
+img[src^="/css/icons/"] {
+  width: auto;
+}
+
+a: hover {
+  text-decoration: underline;
+}
+
+article {
+  margin: 0px 10px;
+  background: #FFF;
+}
+
+#primaryNav {
+  display: none;
+}
+
+#secondaryNavigation {
+  padding-bottom: 10px;
+}
+
+#container {
+  background: white;
+}
+
+#mainContent {
+  width: 100%;
+  padding: 0em;
+  float: none;
+}
+
+#mainContent p a,aside p a,#tamuFact a,#mainContent p#scheduleButton a: hover {
+  text-decoration: underline;
+}
+
+#col1,#col2,aside {
+  height: auto;
+  padding: 0em;
+  float: none;
+  width: auto;
+}
+
+/* jquery.mobilemenu.min.js */
+#mm0.mnav {
+  font-weight: bold;
+  border: solid 1px black;
+  padding: .3em;
+  font-size: 1em;
+  margin-bottom: .1em;
+  width: 100%;
+}
+
+h1.pageTitle {
+  text-align: left;
+  margin-bottom: 10px;
+  font-family: Frutiger,"Segoe UI",Arial,Helvetica,Verdana,sans-serif;
+  color: #E4C066;
+  background: #1E1A19 url("http://dmc-assets.tamu.edu/visit/images/chalkboard_bg.jpg") no-repeat;
+  font-size: 1.5em;
+  letter-spacing: 6px;
+  font-weight: 100;
+  padding: 1em;
+}
+
+ul li {
+  margin: 0.5em 10px 0.5em 10px;
+}
+
+ul {
+  list-style: disc;
+}
+
+#headerWrapper {
+  margin: 0 auto;
+  background-color: #500000;
+  height: 90px;
+}
+
+header {
+  color: white;
+  background: url('http://dmc-assets.tamu.edu/visit/images/header_bg.png') repeat-x;
+  text-align: center;
+  padding-bottom: 1em;
+}
+
+header a {
+  color: white;
+}
+
+header a: hover {
+  text-decoration: underline;
+}
+
+#logo {
+  padding: 5px 0 0 0;
+  margin: auto 2%;
+  text-align: left;
+  width: 396px;
+  height: 30px;
+  background: url('http://dmc-assets.tamu.edu/visit/images/primarymark.png') left no-repeat;
+}
+
+#logo a {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+#rightHead {
+  text-align: center;
+  width: 100%;
+  float: none;
+}
+
+#searchForm {
+  position: relative;
+  text-align: left;
+	display: inline-block;
+	zoom: 1; /* ie7 hack for display:inline-block */
+  height: 20px;
+  margin: 0;
+  padding: 0;
+  margin-top: 8px;
+  width: 190px;
+}
+
+#search_text_box {
+	background: #fff;
+	outline: none;
+  height: 20px;
+  width: 175px;
+  border: none;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius:10px;
+}
+
+#search_button {
+	color: #fff;
+  margin: 0;
+  padding: 0;
+	width: 20px;
+  -webkit-appearance: none;
+	text-shadow: 0 1px 1px rgba(0,0,0,.6);
+  position: absolute;
+  top: 0px;
+  left: 175px;
+  height: 20px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius:10px;
+  background:#e4c066 url('http://dmc-assets.tamu.edu/search/images/search_box_icon.png') 3px center no-repeat;
+  border: 1px solid #e4c066;
+  border-left: 1px solid black;
+}
+
+.ie #search_button {
+  margin-top: 1px;
+}
+
+.ie8 #search_button, .ie7 #search_buttton {
+  margin-top: 2px;
+}
+
+input: focus {
+  outline: none;
+}
+
+footer {
+  position: relative;
+  width: 100%;
+  color: #500000;
+  padding: 10px 0px;
+}
+
+footer a {
+  color: #500000;
+}
+
+#footerLinks {
+  margin-top: 3em;
+}
+
+
+#findUs {    
+  width: 230px;
+  margin-right: 40px;
+}
+
+#socialLinks {
+  position: relative;
+  height: 141px;
+  margin-left: 10px;
+  margin-top: 20px;
+  width: 150px;
+  clear: left;
+}
+
+#socialLinks a {
+  position: absolute;
+  height: 43px;
+  width: 43px;
+}
+
+#socialLinks a: link {
+  opacity: 1;
+  top: 10px;
+}
+
+#socialLinks a: focus {
+  opacity: 1;
+  top: 10px;
+  outline: none;
+  box-shadow: 0 3px 10px #666;
+  -moz-box-shadow: 0 3px 10px #666;
+  -webkit-box-shadow: 0 3px 10px #666;
+}
+
+.item {
+  width: 230px;
+  border-top: dotted #500000 1px;
+}
+
+div.itemname {
+  float: left;
+  width: 80px;
+  color: #500000;
+}
+
+div.itemvalue {
+  width: 150px;
+  float: left;
+  color: #500000;
+}
+  
+footer {
+  position: relative;
+  width: 100%;
+  color: #500000;
+  padding: 10px 0px;
+}
+
+#footerWrapper {
+  margin: 0 auto;
+  padding: 5px 20px;
+}
+
+a#footerFacebook {
+  background: url('http://dmc-assets.tamu.edu/visit/images/social_icons1.png') 0px -0px no-repeat;
+}
+
+a#footerTwitter {
+  background: url('http://dmc-assets.tamu.edu/visit/images/social_icons1.png') -50px -0px no-repeat;
+  left: 60px;
+}
+
+a#footerYoutube {
+  background: url('http://dmc-assets.tamu.edu/visit/images/social_icons1.png') -100px -0px no-repeat;
+  left: 120px;
+}
+
+a#footerFlickr {
+  background: url('http://dmc-assets.tamu.edu/visit/images/social_icons1.png') -0px -50px no-repeat;
+  left: 0px;
+  margin-top: 60px;
+}
+
+a#footerFourSquare {
+  background: url('http://dmc-assets.tamu.edu/visit/images/social_icons1.png') -50px -50px no-repeat;
+  left: 60px;
+  margin-top: 60px;
+}
+
+a#footerItunes {
+  background: url('http://dmc-assets.tamu.edu/visit/images/social_icons1.png') -100px -50px no-repeat;
+  left: 120px;
+  margin-top: 60px;
+}
+
+a#footerPinterest {
+  background: url('http://dmc-assets.tamu.edu/visit/images/social_icons1.png') -0px -100px no-repeat;
+  left: 0px;
+  margin-top: 120px;
+}
+
+#tamLogo {
+  display: none;
+}
+
+
+/* ==|== Narrow images =====================================================
+   ========================================================================== */
+
+@media only screen and (min-width: 300px) {
+  /* Style adjustments for viewports 300px and over go here */
+  img {
+     width: auto;
+  }
+}
+
+
+/* ==|== Tablet-screen override styles =====================================================
+   ========================================================================== */
+
+@media only screen and (min-width: 768px) {
+  /* Style adjustments for viewports 768px and over go here */
+
+  #wrapper {
+    background: #eaba4a url('http://dmc-assets.tamu.edu/visit/images/VirtualTourBG.jpg') 50% repeat-y;
+    width: auto;
+  }
+
+  #mm0.mnav {
+    width: 750px;
+  }
+
+  header {
+    padding-bottom: 0;
+    text-align: right;
+    width: 100%;
+  }
+
+  #headerWrapper {
+    width: auto;
+    margin: 0 auto;
+    background-color: #500000;
+    height: 50px;
+  }
+
+  #secondaryNavigation {
+    text-align: right;
+    margin-right: 0px;
+    float: right;
+  }
+
+ #searchForm {
+   float: right;
+  }
+
+  #logo {
+      padding:15px 0 0 0;
+  }
+
+  #rightHead {
+    float: right;
+    text-align: left;
+    width: 400px;
+    margin-right: 80px;
+    margin-top: 5px;
+  }
+  
+  h1.pageTitle {
+     background: transparent;
+     padding: 0em;
+     font-size: 2.2em;
+  }
+
+  
+  #primaryNav {
+    display: block;
+    margin-bottom: 1em;
+  }
+
+  #secondary #primaryNavigation {
+    mrgin-top: -40px;
+    width: 800px;
+  }
+
+  #primaryNavigation ul {
+    text-align: center;
+    lst-style: none;
+    color: white;
+    margin-left: 0px;
+    padding-top: 1em;
+  }
+
+  #primaryNavigation ul li {
+    display: inline;
+    font-size: 120%;
+    padding-bottom: 0px;
+    margin: 0em 1%;
+  }
+
+  #primaryNavigation ul li:not(:first-child):before {
+    content: '\007C';
+    padding-right: 15px;
+  }
+
+  #primaryNavigation ul li a {
+    color: white;
+    padding: 10px 5px 10px 5px;
+  }
+
+  #primaryNavigation ul li a:hover {
+    text-decoration: none;
+    color: #FAB400;
+  }
+
+  article {
+    margin: auto;
+    width: 700px;
+    padding-bottom: 1em;
+    background: #1E1A19 url("http://dmc-assets.tamu.edu/visit/images/chalkboard_bg.jpg") no-repeat;
+  }
+
+  article#secondary {
+     width: auto;
+     padding: 0px 20px 10px 20px;
+  }
+
+  #mm0.mnav {
+    width: 730px;
+  }
+
+  #mainContent {
+    width: 74%;
+    padding: 1em;
+    float: left;
+    min-height: 450px;
+  } 
+
+  #col1, #col2, aside {
+    padding: 1em;
+  }
+
+  #col1 {
+    width: 45%;
+    float: left;
+    padding-right: 2%;
+  }
+
+  #col2 {
+    width: 45%;
+    float: left;
+  }
+
+  #col1 ul,#col2 ul {
+    margin-bottom: 1em;
+  }
+
+  #findUs {
+    float:left;
+  }
+
+  #connect {
+    float: left;
+    width: 230px;
+  }
+
+  #footerLinks {
+    margin-top: 0px;
+  }
+
+  footer {
+    position: relative;
+    padding: 0px;
+    margin-top: 20px;
+    line-height: 1.6em;
+  }
+
+  #footerWrapper {
+    background: #FFF;
+    width: 95%;
+    height: 200px;
+  }
+
+}
+
+/* ==|== Desktop =====================================================
+   ========================================================================== */
+
+@media only screen and (min-width: 1024px) {
+  /* Style adjustments for viewports 1024px and over go here */
+  
+  #wrapper {
+    background: url('http://dmc-assets.tamu.edu/visit/images/VirtualTourBG.jpg');
+  }
+
+  #headerWrapper {
+    width: 1140px;
+    height: 35px;
+  }
+
+  #rightHead {
+    width: 550px;
+    margin-right: 130px;
+    margin-top: -2px;
+  }
+
+  #secondary #primaryNavigation {
+    margin-top: -40px;
+    width: 950px;
+  }
+
+  article {
+    width: 960px;
+  }
+
+  article#secondary {
+    padding: 40px 20px 20px 20px;
+    width: 1000px;
+  }
+
+  #logo {
+    margin: 0px 2em 2em 90px;
+    padding: 5px 0 0 0;
+  }
+
+  #mainContent {
+    width: 69%;
+   }
+  
+  #footerWrapper {
+    width: 960px;
+    height: 200px;
+  }
+
+  #footerLinks {
+    margin-top: 0em;
+  }
+
+  #tamLogo {
+    float: left;
+    display: block;
+  }
+
+  #socialLinks {
+    margin-top: 0px;
+  }
+
+}
+
+@media print {
+  * { background: transparent !important; color: black !important; text-shadow: none !important; filter: none !important; -ms-filter: none !important; } 
+  a, a: visited { text-decoration: underline; }
+
+  a[href]: after { content: " (" attr(href) ")"; }
+
+  abbr[title]: after { content: " (" attr(title) ")"; }
+
+  .ir a: after, a[href^="javascript: "]: after, a[href^="#"]: after { content: ""; }  
+  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+
+  thead { display: table-header-group; } 
+  tr, img { page-break-inside: avoid; }
+
+  img { max-width: 100% !important; }
+
+  @page { margin: 0.5cm; }
+
+  p, h2, h3 { orphans: 3; widows: 3; }
+
+  h2, h3 { page-break-after: avoid; }
+
+}

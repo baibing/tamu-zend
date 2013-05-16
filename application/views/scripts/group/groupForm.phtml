@@ -1,0 +1,206 @@
+  <form action="<?php echo $this->element->getAction(); ?>" method="<?php echo $this->element->getMethod(); ?>">
+    <fieldset class="actionForm">
+      <legend>Select Your Tour Date</legend>
+      <label for="date">Select a date from the calendar:</label>
+      <input type="text" name="date" id="date" value="<?php echo $this->element->getView()->date; ?>" />
+    </fieldset>
+
+    <fieldset class="actionForm">
+      <legend>Select a Tour Schedule</legend>
+
+      <?php 
+	  $schedule = $this->element->getView()->schedule;
+	  $checkSche1 = ($schedule == 1)? "checked" : "";
+	  $checkSche2 = ($schedule == 2)? "checked" : "";
+	  $checkSche3 = ($schedule == 3)? "checked" : "";
+	  $sche_id = $this->element->getView()->sche_id;
+	  ?>
+
+      <div class="scheduleBox" name="schedule1" id="schedule1">
+        <label><input type="radio" name="schedule" id="schedule-1" value="1" <?php echo $checkSche1; ?>/>Schedule 1</label>
+          <div class="scheduleElement">11:15 a.m. - 12:15 p.m. <span>Campus Tour</span></div>
+          <div class="scheduleElement">1:00 a.m. - 2:00 p.m. 	 <span>Lunch</span></div>
+          <div class="scheduleElement">2:15 a.m. - 3:15 p.m. <span>Prospective Student Section</span></div>
+          <div class="scheduleElement">3:30 p.m. - 4:15 p.m. <span>Additional Tour Option*</span></div>
+          <div class="optionalTours">
+			<?php 
+			$option1 = $this->element->getElement('addition1')->getMultiOptions(); 
+			foreach ($option1 as $value => $label) {
+				$checked = ($sche_id == $value)? "checked" : "";
+				echo '<div class="subRadioWrapper">
+			          	<input class="subRadio" type="radio" name="additionTour" id="schedule1Option'.$value.'" value="'.$value.'" '.$checked.'>
+			          	<label class="radioLabel" for="schedule1Option'.$value.'">' . $label . '</label>
+			          </div>';
+			}
+			?>
+			<div class="spacer"></div>
+         </div>
+      </div>
+
+      <div class="scheduleBox" name="schedule2" id="schedule2">
+        <label><input type="radio" name="schedule" id="schedule-2" value="2" <?php echo $checkSche2; ?>/>Schedule 2</label>
+          <div class="scheduleElement">11:15 a.m. - 12:15 p.m. <span>Campus Tour</span></div>
+          <div class="scheduleElement">1:00 a.m. - 2:00 p.m. 	 <span>Lunch</span></div>
+          <div class="scheduleElement">2:15 a.m. - 3:15 p.m. <span>Prospective Student Section</span></div>
+          <div class="scheduleElement">3:30 p.m. - 4:15 p.m. <span>Additional Tour Option*</span></div>
+          <div class="optionalTours">
+			<?php 
+			$option2 = $this->element->getElement('addition2')->getMultiOptions(); 
+			foreach ($option2 as $value => $label) {
+				$checked = ($sche_id == $value)? "checked" : "";
+				echo '<div class="subRadioWrapper">
+			          	<input class="subRadio" type="radio" name="additionTour" id="schedule2Option'.($value-3).'" value="'.$value.'" '.$checked.'>
+			          	<label class="radioLabel" for="schedule2Option'.($value-3).'">' . $label . '</label>
+			          </div>';
+			}
+			?>
+            <div class="spacer"></div>
+          </div>
+      </div>
+
+      <div class="scheduleBox">
+        <label><input type="radio" name="schedule" id="schedule-3" value="3" <?php echo $checkSche3; ?>/>Tour Only</label>
+        <div style="margin-left: 10px;">
+          <br>Tour Time:<br>
+		  <?php 
+ 		  $option3 = $this->element->getElement('tourTime')->getMultiOptions();
+		  foreach ($option3 as $value => $label) {
+			  $checked = ($sche_id == $value)? "checked" : "";
+			  echo '<div class="subRadioWrapper" name="touronly'.($value-6).'" id="touronly'.($value-6).'">
+		          	  <input class="subRadio" type="radio" name="tourTime" id="tourTime-'.($value-6).'" value="'.$value.'" '.$checked.'>
+		          	  <label class="radioLabel" for="tourTime-'.($value-6).'">'.$label.'</label>
+		            </div>';
+		  }
+		  ?>
+          <br>Tour By:<br>
+			<?php 
+			$tourBy = $this->element->getElement('tourBy')->getMultiOptions();
+			$tour_by = $this->element->getView()->tour_by;
+			foreach ($tourBy as $value => $label) {
+				$checked = ($tour_by != "" && $tour_by == $value)? "checked" : "";
+				echo '<div class="subRadioWrapper">
+			          	<input class="subRadio" type="radio" name="tourBy" id="tourBy-'.$value.'" value="'.$value.'" '.$checked.'>
+			          	<label class="radioLabel" for="tourBy-'.$value.'">' . $label . '</label>
+			          </div>';
+			}
+			?>
+        </div>
+        <div class="spacer"></div>
+      </div>
+    </fieldset>
+
+    <fieldset class="actionForm">
+      <legend>Group Information</legend>
+
+		<div>
+			<label for="name">Group Name:</label>
+	    	<?php echo $this->element->name; ?>
+	    </div>
+
+		<div>
+		    <label for="type">Group Type:</label>
+<!-- assume this is a read from databse with the value = id field -->
+		    <?php echo $this->element->type; ?>
+	    </div>
+<!-- if selects "other" --> 
+		<div id="OGType" style="display:<?php echo ($this->element->getView()->type == "Other")? "block":"none"?>" >
+					  <label for="otherGType" >Please enter the group type:</label>
+					  <?php echo $this->element->otherGType; ?>
+		</div>
+		<div id="slidingDiv" class="toggleDiv" style="display: none;">Fill this space with really interesting content.</div>
+
+
+<!-- dynamically show based on Group Type Selection.  If a student group show both. 
+     If an adult group, ask for total number. -->
+
+		<div>
+      		<label for="visitors_num">Enter the number of students in your party:</label>
+      		<?php echo $this->element->visitors_num; ?>
+	    </div>
+
+		<div>
+      		<label for="audits_num">Enter the number of adults in your party:</label>
+      		<?php echo $this->element->audits_num; ?>
+	    </div>
+
+		<div>
+      		<label for="total_num">Enter the size of your  party:</label>
+      		<?php echo $this->element->total_num; ?>
+	    </div>
+
+      <div style="margin: 1em 0em; font-weight: bold; font-size: 90%;">Lunch Payment Method</div>
+      <?php 
+      $lunchPayment = $this->element->getElement('lunch_payment')->getMultiOptions();
+	  $lunch_payment = $this->element->getView()->lunch_payment;
+	  foreach ($lunchPayment as $value => $label) {
+	  	$checked = ($lunch_payment != "" && $value == $lunch_payment)? "checked" : "";
+	  	echo '<div><input type="radio" name="lunch_payment" id="lunchPayment-'.$value.'" value="'.$value.'" '. $checked . '>
+      <label for="lunchPayment-'.$value.'" class="radioLabel">' . $label . '</label></div>';
+	  }
+	  ?>
+
+      <div style="margin: 1em 0em;font-weight: bold; font-size: 90%;">Bus Parking:</div>
+      <?php 
+      $busParking = $this->element->getElement('bus_parking')->getMultiOptions();
+	  $bus_parking = $this->element->getView()->bus_parking;
+	  foreach ($busParking as $value => $label) {
+	  	$checked = ($bus_parking != "" && $value == $bus_parking)? "checked" : "";
+	    echo '<div><input type="radio" name="bus_parking" id="busParking-'.$value.'" value="'.$value.'" '. $checked . '>
+      <label for="busParking-'.$value.'" class="radioLabel">' . $label . '</label></div>';
+	  }
+	  ?>
+
+	  <div>
+	  	<label for="bus_name">Name on Bus:</label>
+	  	<?php echo $this->element->bus_name; ?>
+	  </div>
+    </fieldset>
+
+    <fieldset class="actionForm">
+      <legend>Leader contact information</legend>
+
+	  	<div>
+		    <label for="first_name" >First Name:</label>
+		    <?php echo $this->element->first_name; ?>
+	 	</div>
+
+	  	<div>
+		    <label for="last_name">Last Name:</label>
+		    <?php echo $this->element->last_name; ?>
+	 	</div>
+
+	  	<div>
+		    <label for="email">Email:</label>
+		    <?php echo $this->element->email; ?>
+	 	</div>
+
+	  	<div>
+		    <label for="phone" >Cell Phone:</label>
+		    <?php echo $this->element->phone; ?>
+	 	</div>
+
+	  	<div>
+		    <label for="address">Address:</label>
+		    <?php echo $this->element->address; ?>
+	 	</div>
+
+	  	<div>
+		    <label for="city">City:</label>
+		    <?php echo $this->element->city; ?>
+	 	</div>
+
+	  	<div>
+		    <label for="state">State</label>
+		    <?php echo $this->element->state; ?>
+	 	</div>
+
+	  	<div>
+		    <label for="zipcode">Zipcode:</label>
+		    <?php echo $this->element->zipcode; ?>
+	 	</div>
+
+    </fieldset>      
+
+    <input type="submit" value="Submit">
+
+  </form>
